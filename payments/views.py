@@ -1,3 +1,4 @@
+import os
 import stripe
 
 from django.conf import settings
@@ -72,7 +73,7 @@ def stripe_config(request):
 def create_checkout_session(request, id):
     if request.method == 'GET':
         order = request.GET.get('order')
-        domain_url = 'http://localhost/'
+        domain_url = f'http://{os.getenv("HOSTNAME")}'
         stripe.api_key = settings.STRIPE_SECRET_KEY
         if order:
             items = get_object_or_404(
