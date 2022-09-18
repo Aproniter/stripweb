@@ -6,7 +6,7 @@ function add_to_cart(item_id){
   .finally(
     setTimeout(function(){
       window.location.reload();
-    }, 200)
+    }, 500)
   );
 };
 
@@ -18,7 +18,7 @@ function del_from_cart(item_id){
   .finally(
     setTimeout(function(){
       window.location.reload();
-    }, 200)
+    }, 500)
     
   );
 }
