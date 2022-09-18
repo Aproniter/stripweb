@@ -17,5 +17,7 @@
     </br>
     {% if order %}
         <button class="button is-primary" onclick="pay(item_id=NaN, order_id='{{order.id}}');">Оформить заказ</button>
+    {% else %}
+        <p>Корзина пуста</p>
     {% endif %}
 {% endblock %}

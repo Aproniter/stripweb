@@ -51,6 +51,8 @@ def del_from_cart(request, id):
         payer=request.user
     )
     order.items.remove(item)
+    if order.items.count() == 0:
+        order.delete()
     return JsonResponse({'item_del_from_cart': item.name})
 
 
