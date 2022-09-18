@@ -55,6 +55,10 @@ def del_from_cart(request, id):
 
 
 def success_page(request):
+    order = get_object_or_404(
+        Order,
+        payer=request.user
+    ).delete()
     return render(request,'payments/success.html')
 
 
