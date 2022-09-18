@@ -1,0 +1,24 @@
+{% extends 'payments/base.html' %}
+{% load static %}
+{% block head %}
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+{% block title %}Item Page Stripe{% endblock %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+        {{ item.name }}</br>
+        {{ item.description }}</br>
+        <button class="button is-primary" onclick="pay(item_id='{{item.id}}', order_id=NaN);">Buy</button>
+        {% if in_order %}
+            <button class="button is-primary" onclick="del_from_cart('{{item.id}}');">Delete from cart</button>
+        {% else %}
+            <button class="button is-primary" onclick="add_to_cart('{{item.id}}');">Add to cart</button>
+        {% endif %}
+        </div>
+    </section>
+    {% if order %}
+    <button class="button is-primary" onclick="pay(item_id=NaN, order_id='{{order.id}}');">Оформить заказ</button>
+    {% endif %}
+{% endblock %}

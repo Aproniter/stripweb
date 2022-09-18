@@ -1,0 +1,21 @@
+{% extends 'payments/base.html' %}
+{% load static %}
+{% block head %}
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+{% block title %}Home Page Stripe{% endblock %}
+{% block content %}
+    {% for item in items %}
+    <a href="{% url 'item' id=item.id %}">
+        <div class="item">
+            {{ item.name }}
+        </div>
+    </a>
+    {% endfor %}
+    </br>
+    </br>
+    {% if order %}
+        <button class="button is-primary" onclick="pay(order_id='{{order.id}}');">Оформить заказ</button>
+    {% endif %}
+{% endblock %}
